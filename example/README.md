@@ -5,3 +5,4 @@
 * Run 'npm run build' for every service to create a bundle.js file.
 * Run 'npm start' for every service and the proxy.
 * In a browser navigate to localhost:3000
+* ....
