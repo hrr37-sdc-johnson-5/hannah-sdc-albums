@@ -1,0 +1,14 @@
+.album-container{
+  display: flex;
+}
+
+.album-square {
+  border: 1px solid yellowgreen;
+  height: 200px;
+  width: 120px;
+}
+
+.album-art {
+  height: 120px;
+  width: 120px;
+}
