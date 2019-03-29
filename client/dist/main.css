@@ -12,3 +12,8 @@
   height: 120px;
   width: 120px;
 }
+
+.album-description {
+  background-color: blueviolet;
+  margin-top: 25px;
+}
