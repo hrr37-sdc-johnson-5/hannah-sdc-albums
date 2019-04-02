@@ -1,6 +1,6 @@
 import React from 'react';
 import RecommendedAlbums from './components/RecommendedAlbums.jsx';
-import { exampleAlbum } from './mockData.js';
+
 
 
 
@@ -8,13 +8,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      albumResults: []
+      albumResults: [],
+      albumTags: null,
+      artist: null
     }
     this.getRelatedAlbums = this.getRelatedAlbums.bind(this);
+    this.getExampleAlbumInfo = this.getExampleAlbumInfo.bind(this);
   }
 
   componentDidMount() {
     this.getRelatedAlbums()
+    this.getExampleAlbumInfo()
   }
 
   getRelatedAlbums() {
@@ -27,12 +31,22 @@ class App extends React.Component {
       });
   }
 
+  getExampleAlbumInfo() {
+    fetch(`/api/tags/${this.props.album.id}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(album => {
+      this.setState({artist: album.artist, albumTags: album.tags})
+    })
+  }
+
   render() {
     console.log(this.state.albumResults)
     return (
       <div>
-        <span>If you like {this.props.album.artist}, you may also like:</span>
-        <div className="album-container"> <RecommendedAlbums albums={this.state.albumResults} example={exampleAlbum} /></div>
+        <span>If you like {this.state.artist}, you may also like:</span>
+        <div className="album-container"> <RecommendedAlbums albums={this.state.albumResults} /></div>
       </div>
     )
   }
