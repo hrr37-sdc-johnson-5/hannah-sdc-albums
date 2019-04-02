@@ -1,10 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { mockAlbumResults } from './mockData.js'
 import RecommendedAlbums from './components/RecommendedAlbums.jsx';
 import { exampleAlbum } from './mockData.js';
-import '../dist/main.css';
-const id = 1;
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +18,7 @@ class App extends React.Component {
   }
 
   getRelatedAlbums() {
-    fetch(`/api/albums/${this.props.albumID}`)
+    fetch(`/api/albums/${this.props.album.id}`)
       .then(response => {
         return response.json();
       })
@@ -33,11 +31,13 @@ class App extends React.Component {
     console.log(this.state.albumResults)
     return (
       <div>
-        <span>If you like {exampleAlbum.artist}, you may also like:</span>
+        <span>If you like {this.props.album.artist}, you may also like:</span>
         <div className="album-container"> <RecommendedAlbums albums={this.state.albumResults} example={exampleAlbum} /></div>
       </div>
     )
   }
 }
 
-ReactDOM.render(<App albumID={id}/>, document.getElementById('root'));
+
+
+export default App

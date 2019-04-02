@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../dist/main.css';
+
 
 class RecommendedAlbums extends React.Component {
   constructor(props) {
