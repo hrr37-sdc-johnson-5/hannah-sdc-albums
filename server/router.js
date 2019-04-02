@@ -18,17 +18,14 @@ var getAlbumByID = (id, callback) => {
 router.get('/albums/:id', (req, res) => {
   getAlbumsFromDb((err, results) => {
     if (err) return err;
-    var currentID = req.params.id;
+    var currentID = Number(req.params.id);
     getAlbumByID(currentID, (err, result) => {
       if (err) return err;
       var albumTags = result.tags.split(',');
       var relatedAlbums = results.filter(album => {
         currentTags = album.tags.split(',');
-        if (album.id === currentID) {
-          return false;
-        }
         for (var i = 0; i < albumTags.length; i++) {
-          if (currentTags.includes(albumTags[i])) {
+          if (currentTags.includes(albumTags[i]) && album.id !== currentID) {
             return true;
           }
         }
