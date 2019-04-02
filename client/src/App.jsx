@@ -32,7 +32,7 @@ class App extends React.Component {
   }
 
   getExampleAlbumInfo() {
-    fetch(`/api/tags/${this.props.album.id}`)
+    fetch(`/api/album/${this.props.album.id}`)
     .then(response => {
       return response.json();
     })

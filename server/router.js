@@ -36,7 +36,7 @@ router.get('/albums/:id', (req, res) => {
   });
 });
 
-router.get('/tags/:id', (req, res) => {
+router.get('/album/:id', (req, res) => {
   var currentID = req.params.id;
   getAlbumByID(currentID, (err, result) => {
     if (err) return err;
