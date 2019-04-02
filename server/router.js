@@ -23,11 +23,12 @@ router.get('/albums/:id', (req, res) => {
       if (err) return err;
       var albumTags = result.tags.split(',');
       var relatedAlbums = results.filter(album => {
+        currentTags = album.tags.split(',');
         if (album.id === currentID) {
           return false;
         }
         for (var i = 0; i < albumTags.length; i++) {
-          if (album.tags.includes(albumTags[i])) {
+          if (currentTags.includes(albumTags[i])) {
             return true;
           }
         }
@@ -35,8 +36,16 @@ router.get('/albums/:id', (req, res) => {
       });
       res.status(200).send(relatedAlbums);
     });
-  })
-})
+  });
+});
 
+router.get('/tags/:id', (req, res) => {
+  var currentID = req.params.id;
+  getAlbumByID(currentID, (err, result) => {
+    if (err) return err;
+    console.log(result)
+    res.status(200).send(result);
+  });
+});
 
 module.exports = router
