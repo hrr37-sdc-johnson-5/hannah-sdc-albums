@@ -21,7 +21,7 @@ router.get('/albums/:id', (req, res) => {
     var currentID = req.params.id;
     getAlbumByID(currentID, (err, result) => {
       if (err) return err;
-      var albumTags = result.tags.split(', ');
+      var albumTags = result.tags.split(',');
       var relatedAlbums = results.filter(album => {
         if (album.id === currentID) {
           return false;
