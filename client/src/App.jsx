@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {mockAlbumResults} from './mockData.js'
+import { mockAlbumResults } from './mockData.js'
 import RecommendedAlbums from './components/RecommendedAlbums.jsx';
-import {exampleAlbum} from './mockData.js';
+import { exampleAlbum } from './mockData.js';
 import '../dist/main.css';
-
+const id = 1;
 
 class App extends React.Component {
   constructor(props) {
@@ -12,26 +12,32 @@ class App extends React.Component {
     this.state = {
       albumResults: []
     }
+    this.getRelatedAlbums = this.getRelatedAlbums.bind(this);
   }
 
   componentDidMount() {
-    //mock get request
-    setTimeout(() => {
-      this.setState({albumResults: mockAlbumResults});
-    }, 1000);
+    this.getRelatedAlbums()
   }
 
-
+  getRelatedAlbums() {
+    fetch(`/api/albums/${this.props.albumID}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(albumResults => {
+        this.setState({ albumResults });
+      });
+  }
 
   render() {
     console.log(this.state.albumResults)
     return (
       <div>
         <span>If you like {exampleAlbum.artist}, you may also like:</span>
-        <div  className="album-container"> <RecommendedAlbums albums={this.state.albumResults} example={exampleAlbum} /></div>
+        <div className="album-container"> <RecommendedAlbums albums={this.state.albumResults} example={exampleAlbum} /></div>
       </div>
     )
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App albumID={id}/>, document.getElementById('root'));
