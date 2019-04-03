@@ -24,8 +24,8 @@ class RecommendedAlbums extends React.Component {
     const hoverClass = this.state.isHovered ? "not-hovered-on" : "";
     return (
       this.props.albums.map((album => {
-        return  <div key={album.id} className="album-square" onMouseEnter={() => this.enterHandler(album.id)} onMouseLeave={this.leaveHandler}>
-        <img className={`album-art ${hoverClass}`} id={this.state.isHovered && this.state.activeAlbum === album.id ? "hovered-on" : ""} src={album.albumArt} />
+        return  <div key={album.id} className={`album-square ${hoverClass}`} onMouseEnter={() => this.enterHandler(album.id)} onMouseLeave={this.leaveHandler} id={this.state.isHovered && this.state.activeAlbum === album.id ? "hovered-on" : ""}>
+        <img className="album-art" src={album.albumArt} />
           <div className="rec-album-info">
             <span className="release-title">{album.albumName}</span>
             <p>by {album.artist}</p>
