@@ -1,9 +1,11 @@
 .album-container{
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .album-square {
-  border: 1px solid yellowgreen;
   height: 200px;
   width: 120px;
 }
@@ -16,4 +18,37 @@
 .album-description {
   background-color: blueviolet;
   margin-top: 25px;
+}
+
+.recommended-title {
+  line-height: 1.231;
+  font-size: 15px;
+  height: 40px;
+  font-weight: 700;
+
+}
+
+.recommended-module {
+  font-family: 'Lato', sans-serif;
+
+  width: 100%;
+  border-top: dotted #b3b3b3 1px;
+  padding-top: 50px;
+  position: relative;
+  top: 50px;
+}
+
+.rec-album-info {
+  font-size: 13px;
+  margin: 5px 0;
+  font-weight: 100;
+}
+
+.release-title {
+  font-weight: 850;
+}
+
+.main-container {
+  width: 960px;
+  margin: 0 auto;
 }

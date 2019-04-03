@@ -2,8 +2,6 @@ import React from 'react';
 import RecommendedAlbums from './components/RecommendedAlbums.jsx';
 
 
-
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -33,20 +31,22 @@ class App extends React.Component {
 
   getExampleAlbumInfo() {
     fetch(`/api/album/${this.props.album.id}`)
-    .then(response => {
-      return response.json();
-    })
-    .then(album => {
-      this.setState({artist: album.artist, albumTags: album.tags})
-    })
+      .then(response => {
+        return response.json();
+      })
+      .then(album => {
+        this.setState({ artist: album.artist, albumTags: album.tags })
+      })
   }
 
   render() {
     console.log(this.state.albumResults)
     return (
-      <div>
-        <span>If you like {this.state.artist}, you may also like:</span>
-        <div className="album-container"> <RecommendedAlbums albums={this.state.albumResults} /></div>
+      <div className="recommended-module">
+        <div className="main-container">
+          <p className="recommended-title">If you like {this.state.artist}, you may also like:</p>
+          <div className="album-container"> <RecommendedAlbums albums={this.state.albumResults} /></div>
+        </div>
       </div>
     )
   }

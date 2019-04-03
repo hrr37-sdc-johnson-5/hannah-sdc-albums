@@ -31,7 +31,8 @@ router.get('/albums/:id', (req, res) => {
         }
         return false;
       });
-      res.status(200).send(relatedAlbums);
+      var finalResults = relatedAlbums.slice(0, 7);
+      res.status(200).send(finalResults);
     });
   });
 });

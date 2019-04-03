@@ -23,8 +23,10 @@ class RecommendedAlbums extends React.Component {
     return (
       this.props.albums.map((album => {
         return <div key={album.id} className="album-square" onMouseEnter={() => this.enterHandler(album.id)} onMouseLeave={this.leaveHandler}> <img className="album-art" src={album.albumArt} />
-          <span>{album.albumName}</span>
-          <p>by {album.artist}</p>
+          <div className="rec-album-info">
+            <span className="release-title">{album.albumName}</span>
+            <p>by {album.artist}</p>
+          </div>
           { this.state.activeAlbum === album.id ? <div className="album-description">{album.description}</div> : null }
         </div>
 
