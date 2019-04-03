@@ -61,6 +61,7 @@
 
 .not-hovered-on {
   opacity: .2;
+  transition: opacity .25s;
 }
 
 #hovered-on {
