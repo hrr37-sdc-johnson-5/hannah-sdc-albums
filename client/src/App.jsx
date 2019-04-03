@@ -40,7 +40,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.albumResults)
     return (
       <div className="recommended-module">
         <div className="main-container">
