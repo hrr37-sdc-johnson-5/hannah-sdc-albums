@@ -26,10 +26,10 @@ var makeData = () => {
     var singleEntry = {};
     singleEntry.id = i;
     singleEntry.albumName = `${faker.commerce.color()} ${faker.lorem.word()}`;
-    singleEntry.artist = `${faker.random.word()} ${faker.random.word()}`;
+    singleEntry.artist = `${faker.name.firstName()}`;
     singleEntry.albumArt = `https://loremflickr.com/120/120/abstract?random=${i}`;
     singleEntry.tags = fakeTags();
-    singleEntry.description = faker.lorem.paragraph();
+    singleEntry.description = faker.lorem.sentences(2);
     dataArr.push(singleEntry);
   }
   return dataArr;

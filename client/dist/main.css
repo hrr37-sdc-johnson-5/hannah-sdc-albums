@@ -16,8 +16,12 @@
 }
 
 .album-description {
-  background-color: blueviolet;
-  margin-top: 25px;
+  background-color: transparent;
+  width: 250px;
+  margin: auto;
+  height: auto;
+  font-size: 13px;
+  padding-top: 25px;
 }
 
 .recommended-title {
@@ -51,4 +55,12 @@
 .main-container {
   width: 960px;
   margin: 0 auto;
+}
+
+.not-hovered-on {
+  opacity: .4;
+}
+
+#hovered-on {
+  opacity: 1;
 }
