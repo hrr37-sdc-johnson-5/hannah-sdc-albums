@@ -33,8 +33,10 @@
 }
 
 .recommended-module {
+  background-color: #212121;
+  color: #F8EAEB;
   font-family: 'Lato', sans-serif;
-
+  height: 300px;;
   width: 100%;
   border-top: dotted #b3b3b3 1px;
   padding-top: 50px;
@@ -58,7 +60,7 @@
 }
 
 .not-hovered-on {
-  opacity: .4;
+  opacity: .2;
 }
 
 #hovered-on {

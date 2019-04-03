@@ -39,4 +39,4 @@ class RecommendedAlbums extends React.Component {
   }
 }
 
-export default RecommendedAlbums
+export default RecommendedAlbums;
