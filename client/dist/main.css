@@ -64,6 +64,6 @@
   transition: opacity .25s;
 }
 
-#hovered-on {
+.hovered-on {
   opacity: 1;
 }
