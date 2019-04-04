@@ -10,11 +10,24 @@
   },
   "scripts": {
     "start": "nodemon",
-    "react-dev": "webpack -d --watch"
+    "react-dev": "webpack -d --watch",
+    "seed-data": "node ./database/seed.js",
+    "get-test": "curl http://localhost:3001/api/albums/1",
+    "test": "jest"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "jest-enzyme",
+    "testEnvironment": "enzyme",
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
+    ]
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "eslint": "^5.15.3",
     "express": "^4.16.4",
+    "faker": "^4.1.0",
     "mongoose": "^5.4.20",
     "nodemon": "^1.18.10",
     "react": "^16.8.4",
@@ -24,7 +37,17 @@
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.6.0",
     "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "jest": "^24.6.0",
+    "jest-environment-enzyme": "^7.0.2",
+    "jest-enzyme": "^7.0.2",
+    "jest-fetch-mock": "^2.1.2",
+    "react-test-renderer": "^16.8.6",
+    "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   }
