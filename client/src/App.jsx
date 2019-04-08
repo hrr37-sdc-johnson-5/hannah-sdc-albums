@@ -43,7 +43,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="tags-main-container">
           <Tags tags={this.state.albumTags}/>
         </div>
         <div className="recommended-module">
