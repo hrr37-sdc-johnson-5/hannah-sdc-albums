@@ -22,6 +22,7 @@
   height: auto;
   font-size: 13px;
   padding-top: 25px;
+  color: #939497;
 }
 
 .recommended-title {
@@ -66,4 +67,8 @@
 
 .hovered-on {
   opacity: 1;
+}
+
+.release-artist {
+  color: #939497;
 }

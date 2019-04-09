@@ -2,6 +2,7 @@ import React from 'react';
 import RecommendedAlbums from './components/RecommendedAlbums.jsx';
 
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -41,10 +42,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="recommended-module">
-        <div className="main-container">
-          <p className="recommended-title">If you like {this.state.artist}, you may also like:</p>
-          <div className="album-container"> <RecommendedAlbums albums={this.state.albumResults} /></div>
+      <div>
+        <div className="recommended-module">
+          <div className="main-container">
+            <p className="recommended-title">If you like {this.state.artist}, you may also like:</p>
+            <div className="album-container"> <RecommendedAlbums albums={this.state.albumResults} /></div>
+          </div>
         </div>
       </div>
     )
@@ -53,4 +56,4 @@ class App extends React.Component {
 
 
 
-export default App
+export default App;
