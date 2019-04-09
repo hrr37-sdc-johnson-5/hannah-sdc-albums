@@ -29,7 +29,7 @@ class RecommendedAlbums extends React.Component {
           <img className="album-art" src={album.albumArt} />
           <div className="rec-album-info">
             <span className="release-title">{album.albumName}</span>
-            <p>by {album.artist}</p>
+            <p className="release-artist">by {album.artist}</p>
           </div>
           {this.state.activeAlbum === album.id ? <div className="album-description">{album.description}</div> : null}
         </div>
