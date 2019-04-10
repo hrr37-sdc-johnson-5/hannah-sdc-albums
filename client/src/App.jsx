@@ -3,13 +3,15 @@ import RecommendedAlbums from './components/RecommendedAlbums.jsx';
 
 
 
-class App extends React.Component {
+class RecommendedAlbumsApp extends React.Component {
   constructor(props) {
     super(props);
+    const albumIdFromUrl = window.location.pathname.slice(1, window.location.pathname.length - 1);
     this.state = {
       albumResults: [],
       albumTags: null,
-      artist: null
+      artist: null,
+      albumId: albumIdFromUrl
     }
     this.getRelatedAlbums = this.getRelatedAlbums.bind(this);
     this.getExampleAlbumInfo = this.getExampleAlbumInfo.bind(this);
@@ -21,7 +23,7 @@ class App extends React.Component {
   }
 
   getRelatedAlbums() {
-    fetch(`/api/albums/${this.props.album.id}`)
+    fetch(`/api/albums/${this.state.albumId}`)
       .then(response => {
         return response.json();
       })
@@ -31,7 +33,7 @@ class App extends React.Component {
   }
 
   getExampleAlbumInfo() {
-    fetch(`/api/album/${this.props.album.id}`)
+    fetch(`/api/album/${this.state.albumId}`)
       .then(response => {
         return response.json();
       })
@@ -56,4 +58,4 @@ class App extends React.Component {
 
 
 
-export default App;
+export default RecommendedAlbumsApp;
