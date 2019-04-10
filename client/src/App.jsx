@@ -2,7 +2,6 @@ import React from 'react';
 import RecommendedAlbums from './components/RecommendedAlbums.jsx';
 
 
-
 class RecommendedAlbumsApp extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +22,7 @@ class RecommendedAlbumsApp extends React.Component {
   }
 
   getRelatedAlbums() {
-    fetch(`/api/albums/${this.state.albumId}`)
+    fetch(`http://localhost:3001/api/albums/${this.state.albumId}`)
       .then(response => {
         return response.json();
       })
@@ -33,7 +32,7 @@ class RecommendedAlbumsApp extends React.Component {
   }
 
   getExampleAlbumInfo() {
-    fetch(`/api/album/${this.state.albumId}`)
+    fetch(`http://localhost:3001/api/album/${this.state.albumId}`)
       .then(response => {
         return response.json();
       })

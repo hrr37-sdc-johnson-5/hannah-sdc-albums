@@ -4,9 +4,9 @@ import RecommendedAlbumsApp from './App.jsx';
 import '../dist/reset.css';
 import '../dist/main.css';
 
-// const album = {id: 1, artist: `TeenRoboDog`};
+
 //get id from params to pass into the prop
 
-window.RecommendedAlbumsApp = RecommendedAlbumsApp;
+// ReactDOM.render(<App album={album} />, document.getElementById('rec-albums'));
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+window.RecommendedAlbumsApp = RecommendedAlbumsApp;

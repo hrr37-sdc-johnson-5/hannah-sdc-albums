@@ -41,10 +41,8 @@ router.get('/album/:id', (req, res) => {
   var currentID = req.params.id;
   getAlbumByID(currentID, (err, result) => {
     if (err) return err;
-    console.log(result)
     res.status(200).send(result);
   });
 });
 
 module.exports = router
-
