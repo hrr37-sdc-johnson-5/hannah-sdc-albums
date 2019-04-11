@@ -24,10 +24,10 @@ var makeData = () => {
   var dataArr = [];
   for (var i = 0; i < 100; i++) {
     var singleEntry = {};
-    singleEntry.id = i;
+    singleEntry.id = i + 1;
     singleEntry.albumName = `${faker.commerce.color()} ${faker.lorem.word()}`;
     singleEntry.artist = `${faker.name.firstName()}`;
-    singleEntry.albumArt = `https://loremflickr.com/120/120/abstract?random=${i}`;
+    singleEntry.albumArt = `https://s3.us-east-2.amazonaws.com/album-art-bandland/album-art-assets/picsum-${i}.jpg`;
     singleEntry.tags = fakeTags();
     singleEntry.description = faker.lorem.sentences(2);
     dataArr.push(singleEntry);
