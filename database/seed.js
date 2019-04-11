@@ -22,7 +22,7 @@ var fakeTags = () => {
 
 var makeData = () => {
   var dataArr = [];
-  for (var i = 0; i < 100; i++) {
+  for (var i = 1; i < 100; i++) {
     var singleEntry = {};
     singleEntry.id = i + 1;
     singleEntry.albumName = `${faker.commerce.color()} ${faker.lorem.word()}`;
@@ -37,7 +37,18 @@ var makeData = () => {
 
 var dataEntries = makeData();
 
+var dummy1 =  {id: 1,
+albumName: `${faker.commerce.color()} ${faker.lorem.word()}`,
+artist: `DerAnaM`,
+albumArt: `https://s3.us-east-2.amazonaws.com/album-art-bandland/album-art-assets/picsum-${1}.jpg`,
+tags: fakeTags(),
+description: faker.lorem.sentences(2)
+}
+
+dataEntries.push(dummy1);
+
 // to drop collection, uncomment:
+
 // model.Album.remove({}, function(err) {
 //   console.log('collection removed')
 // });
