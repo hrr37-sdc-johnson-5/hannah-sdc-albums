@@ -44,6 +44,8 @@
     "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.12.4",
+    "gulp": "^3.9.1",
+    "gulp-awspublish": "^4.0.0",
     "jest": "^24.6.0",
     "jest-environment-enzyme": "^7.0.2",
     "jest-enzyme": "^7.0.2",
