@@ -1,30 +1,30 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import RecommendedAlbums from './components/RecommendedAlbums.jsx';
+import Tags from './components/Tags.jsx';
 
 
 class RecommendedAlbumsApp extends React.Component {
   constructor(props) {
     super(props);
-
+    const albumIdFromUrl = window.location.pathname.slice(1, window.location.pathname.length - 1);
     this.state = {
       albumResults: [],
       albumTags: null,
-      artist: null
+      artist: null,
+      albumId: albumIdFromUrl
     }
     this.getRelatedAlbums = this.getRelatedAlbums.bind(this);
     this.getExampleAlbumInfo = this.getExampleAlbumInfo.bind(this);
   }
 
   componentDidMount() {
-    this.getRelatedAlbums(window.location.pathname);
-    this.getExampleAlbumInfo(window.location.pathname);
+    this.getRelatedAlbums()
+    this.getExampleAlbumInfo()
   }
 
-  getRelatedAlbums(id) {
-    if (id === '/') {
-      id = '/1';
-    }
-    fetch(`http://localhost:3001/api/albums${id}`)
+  getRelatedAlbums() {
+    fetch(`http://localhost:3001/api/albums/${this.state.albumId}`)
       .then(response => {
         return response.json();
       })
@@ -33,11 +33,8 @@ class RecommendedAlbumsApp extends React.Component {
       });
   }
 
-  getExampleAlbumInfo(id) {
-    if (id === '/') {
-      id = '/1';
-    }
-    fetch(`http://localhost:3001/api/album${id}`)
+  getExampleAlbumInfo() {
+    fetch(`http://localhost:3001/api/album/${this.state.albumId}`)
       .then(response => {
         return response.json();
       })
@@ -49,6 +46,10 @@ class RecommendedAlbumsApp extends React.Component {
   render() {
     return (
       <div>
+        {ReactDOM.createPortal(
+          <Tags tags={this.state.albumTags}/>,
+          document.getElementById("tags")
+        )}
         <div className="recommended-module">
           <div className="main-container">
             <p className="recommended-title">If you like {this.state.artist}, you may also like:</p>
