@@ -35,3 +35,12 @@ npm install -g webpack
 npm install
 ```
 
+## CRUD API Routes 
+
+Purpose | Path | HTTP Verb | Request body        | Response body
+--- | --- | --- | --- | --- 
+read (view) all recommended albums | api/albums/:id | GET | none |  [{id: '01', albumName: 'cool dog', artist: 'Bandwidth', albumArt: '/path/to/img', tags: 'pop, psychedelic', description: '...' }, {id: '02', albumName: 'fun tunes', artist: 'Bimby', albumArt: '/path/to/img', description: '...', tags: 'pop, trance' }]
+create new album | api/albums/:id | POST | {id: '03', albumName: 'bark', artist: 'Joyknee', albumArt: '/path/to/img', description: '...', tags: 'pop, soul'} | {id: '03', albumName: 'bark', artist: 'Joyknee', albumArt: '/path/to/img', description: '...', tags: 'pop, soul'}
+update existing album | api/albums/:id | PUT | {id: '04', albumName: 'dem boyz', artist: 'Ziggyzag', albumArt: '/path/to/img', description: './.', tags: 'pop, funk' } | {id: '04', albumName: 'dem boyz', artist: 'Ziggyzag', albumArt: '/path/to/img', description: 'new...desc', tags: 'pop, funk' }
+delete specific album | api/albums/:id | DELETE | {id: '05', albumName: 'wambam', artist: 'Sassee', albumArt: '/path/to/img', description: '...', tags: 'pop, electro'} | {id: '05', albumName: 'wambam', artist: 'Sassee', albumArt: '/path/to/img', description: '...', tags: 'pop, electro'}
+
