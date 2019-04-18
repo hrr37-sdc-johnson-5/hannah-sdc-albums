@@ -1,7 +1,7 @@
 // Update with your config settings.
 module.exports = {
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection: 'postgres://localhost/albums',
     migrations: {
       directory: __dirname + '/db/migrations'
