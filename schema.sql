@@ -11,7 +11,7 @@ CREATE TABLE albums(
   description varchar(1000) not null
 );
 
-\copy albums(name, artist, image, tags, description) FROM 'data.csv' DELIMITER ',' CSV HEADER;
+\copy albums(name, artist, image, tags, description) FROM 'db/data.csv' DELIMITER ',' CSV HEADER;
 
 
 

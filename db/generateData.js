@@ -27,7 +27,7 @@ const createAlbum = () => ({
 });
 
 const createAllAlbums = () => {
-  writer.pipe(fs.createWriteStream('data.csv'));
+  writer.pipe(fs.createWriteStream('db/data.csv'));
   for (let i = 0; i <= 1000000; i++) {
     const album = createAlbum();
 
