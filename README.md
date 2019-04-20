@@ -1,11 +1,17 @@
 # Bandland 
-> Bandland is a web application that allows artists to share music with fans and allows fans to support their favorite artists.
+> Bandland is a web application that allows for artists to share music with fans and for fans to support them. 
 
-> I am taking an existing codebase of a web application and scaling it to support (a minimum of) 100 requests per second on EC2 using a t2.micro instance. The original codebase was created to handle 100 data records, and I will be scaling it to generate and seed 10M records. This involves refactoring and essentially recreating the database. I will also be building out CRUD API routes that will query and use the new database.  
+Tasked with reworking backend of web application to improve scalability and handle higher traffic
+- Creating data generation script and scaling database to generate and seed 10M records. Stress testing and analyzing two databases, PostgreSQL and Cassandra, to determine best performance for the use case. 
+- Building out CRUD API routes that will query and use the new database. Performance tuning as needed.
+- Scaling codebase to support (a minimum of) 100 requests per second on EC2 using a t2.micro instance. 
+
 
 ## Related Projects
 
   - https://github.com/team-amy/ana-service
+  - https://github.com/hrr37-sdc-johnson-5/sdc-johnson-cody
+  - https://github.com/hrr37-sdc-johnson-5/Nam-s-Service
 
 ## Table of Contents
 
@@ -21,8 +27,7 @@
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node 6.13.0
-- etc
+- Node 7.6.0+
 
 ## Development
 
@@ -32,6 +37,7 @@ From within the root directory:
 
 ```sh
 npm install -g webpack
+npm install -g nodemon
 npm install
 ```
 
