@@ -2,7 +2,6 @@ const fs = require('fs');
 const csvWriter = require('csv-write-stream');
 let writer = csvWriter();
 const faker = require('faker');
-// let counter = 0;
 
 const createTags = () => {
   let tags = [];
@@ -25,15 +24,6 @@ const createAlbum = () => ({
   tags: createTags(),
   description: faker.lorem.sentences(2),
 });
-
-// const createAllAlbums = () => {
-//   let albums = [];
-//   for (let i = 0; i < 10000000; i++) {
-//     albums.push(createAlbum());
-//   }
-//   return albums;
-// }
-// const allAlbums = createAllAlbums();
 
 const createAllAlbums = () => {
   writer.pipe(fs.createWriteStream('data.csv'));
