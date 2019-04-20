@@ -1,13 +1,8 @@
+const db = require('../generateData.js');
+const csv = require('csv-parser');
+const fs = require('fs');
 
-exports.seed = function(knex, Promise) {
+exports.seed = async function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('albums').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('albums').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
+
 };
