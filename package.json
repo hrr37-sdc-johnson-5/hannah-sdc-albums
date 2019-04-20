@@ -9,9 +9,10 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "nodemon",
+    "start": "nodemon --max-old-space-size=8192 db/generateData.js",
+    "data-gen": "node db/generateData.js",
+    "seed": "psql postgres < schema.sql",
     "react-dev": "webpack -d --watch",
-    "seed-data": "node ./database/seed.js",
     "get-test": "curl http://localhost:3001/api/albums/1",
     "test": "jest"
   },
@@ -26,10 +27,13 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
+    "csv-write-stream": "^2.0.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
+    "knex": "^0.16.5",
     "mongoose": "^5.4.20",
     "nodemon": "^1.18.10",
+    "pg": "^7.10.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
@@ -42,7 +46,10 @@
     "css-loader": "^2.1.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
-    "eslint": "^5.16.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "gulp": "^3.9.1",
     "gulp-awspublish": "^4.0.0",

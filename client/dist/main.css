@@ -23,6 +23,17 @@
   font-size: 13px;
   padding-top: 25px;
   color: #939497;
+  font-style: italic;
+}
+
+.album-link {
+  text-decoration: none;
+  font-size: 13px;
+  color: #939497;
+}
+
+.album-link:hover {
+  text-decoration: underline;
 }
 
 .recommended-title {
@@ -37,7 +48,7 @@
   background-color: #212121;
   color: #F8EAEB;
   font-family: 'Lato', sans-serif;
-  height: 300px;;
+  height: 315px;;
   width: 100%;
   border-top: dotted #b3b3b3 1px;
   padding-top: 50px;

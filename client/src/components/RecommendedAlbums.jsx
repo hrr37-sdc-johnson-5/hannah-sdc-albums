@@ -31,7 +31,11 @@ class RecommendedAlbums extends React.Component {
             <span className="release-title">{album.albumName}</span>
             <p className="release-artist">by {album.artist}</p>
           </div>
-          {this.state.activeAlbum === album.id ? <div className="album-description">{album.description}</div> : null}
+          {activeAlbum === album.id ? (
+          <div>
+            <div className="album-description">{album.description}</div>
+            <br></br>
+            <a className="album-link" href="#">go to album</a></div>) : null}
         </div>
       })
       )

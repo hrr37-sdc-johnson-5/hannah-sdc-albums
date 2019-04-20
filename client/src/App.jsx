@@ -46,10 +46,10 @@ class RecommendedAlbumsApp extends React.Component {
   render() {
     return (
       <div>
-        {ReactDOM.createPortal(
+        {/* {ReactDOM.createPortal(
           <Tags tags={this.state.albumTags}/>,
           document.getElementById("tags")
-        )}
+        )} */}
         <div className="recommended-module">
           <div className="main-container">
             <p className="recommended-title">If you like {this.state.artist}, you may also like:</p>
