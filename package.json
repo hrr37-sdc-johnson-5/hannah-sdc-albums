@@ -9,8 +9,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "nodemon --max-old-space-size=8192 db/generateData.js",
-    "data-gen": "node db/generateData.js",
+    "start": "node server/server.js",
+    "start:dev": "nodemon server/server.js",
+    "data-gen": "node --max-old-space-size=8192 db/generateData.js",
     "seed": "psql postgres < schema.sql",
     "react-dev": "webpack -d --watch",
     "get-test": "curl http://localhost:3001/api/albums/1",
