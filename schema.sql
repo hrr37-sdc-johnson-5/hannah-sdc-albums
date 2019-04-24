@@ -3,7 +3,7 @@ create database bandland;
 \connect bandland;
 
 CREATE TABLE albums(
-  id serial primary key,
+  id int primary key,
   name varchar(100) not null,
   artist varchar(100) not null,
   image varchar(500) not null,
@@ -11,7 +11,7 @@ CREATE TABLE albums(
   description varchar(1000) not null
 );
 
-\copy albums(name, artist, image, tags, description) FROM 'db/data.csv' DELIMITER ',' CSV HEADER;
+\copy albums(id, name, artist, image, tags, description) FROM 'db/data.csv' DELIMITER ',' CSV HEADER;
 
 
 
