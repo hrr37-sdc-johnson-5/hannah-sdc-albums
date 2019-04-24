@@ -1,10 +1,10 @@
 drop keyspace if exists bandland;
-create keyspace bandland with replication = {'class': 'SimpleStrategy', 'replication_factor': 2};
+create keyspace bandland with replication = {'class': 'SimpleStrategy', 'replication_factor': 3};
 
 use bandland;
 
 CREATE TABLE albums(
-  id int primary key,
+  id int PRIMARY KEY,
   name text,
   artist text,
   image text,
@@ -12,4 +12,6 @@ CREATE TABLE albums(
   description text
 );
 
-COPY albums(name, artist, image, tags, description) FROM 'db/data.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+
+COPY albums(id, name, artist, image, tags, description) FROM 'db/data.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+

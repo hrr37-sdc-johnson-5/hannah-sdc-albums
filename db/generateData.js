@@ -19,19 +19,27 @@ const createTags = () => {
   return tags.join(', ');
 };
 
-const createAlbum = () => ({
-  name: faker.lorem.word(2),
-  artist: faker.name.firstName(),
-  image: faker.image.abstract(),
-  tags: createTags(),
-  description: faker.lorem.sentences(2),
-});
+
+// const createAlbum = () => ({
+//   name: faker.lorem.word(2),
+//   artist: faker.name.firstName(),
+//   image: faker.image.abstract(),
+//   tags: createTags(),
+//   description: faker.lorem.sentences(2),
+// });
 
 const createAllAlbums = () => {
   console.time('timing seed');
   writer.pipe(fs.createWriteStream('db/data.csv'));
   for (let i = 0; i < 10000000; i++) {
-    const album = createAlbum();
+    const album = {
+      id: i,
+      name: faker.lorem.word(2),
+      artist: faker.name.firstName(),
+      image: faker.image.abstract(),
+      tags: createTags(),
+      description: faker.lorem.sentences(2),
+    };
     writer.write(album);
   }
   writer.end();
