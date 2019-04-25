@@ -33,7 +33,7 @@ const createAllAlbums = () => {
   writer.pipe(fs.createWriteStream('db/data.csv'));
   for (let i = 0; i < 10000000; i++) {
     const album = {
-      id: i,
+      album_id: faker.random.number({ min: 1, max: 10000000 }),
       name: faker.lorem.word(2),
       artist: faker.name.firstName(),
       image: faker.image.abstract(),
