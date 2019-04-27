@@ -12,37 +12,17 @@ const getAlbumsByAlbumId = (album_id, callback) => {
     });
 };
 
-// const getAlbumsByAlbumId = (req, res) => {
-//   const id = req.params.id
-//   pool.query('select * from albums where album_id = $1', [id], (error, albums) => {
-//     if (error) {
-//       console.log(error);
-//     }
-//     res.status(200).send(albums);
-//   });
-// };
-
-// const getAlbumById = (id) => {
-//   return new Promise((resolve, reject) => {
-//     pool.query('select * from albums where id = $1', [id], (err, result) => {
-//       if (err) { reject(err); }
-//       resolve(result);
+// const getAlbumsByAlbumId = (album_id) => {
+//   pool.query('select * from albums where album_id = $1', [album_id])
+//     .then((albums) => {
+//       return albums;
+//     })
+//     .catch((err) => {
+//       console.log(err, 'Error getting all albums');
 //     });
-//   });
 // };
 
 // CREATE
-// const addAlbum = (album_id, name, artist, image, tags, description) => {
-//   const params = [album_id, name, artist, image, tags, description];
-//   pool.query('insert into albums values ($1, $2, $3, $4, $5, $6)', params)
-//     .then((newAlbum) => {
-//       console.log(newAlbum);
-//       return newAlbum
-//     })
-//     .catch(err => console.log(err, 'Error adding new album'));
-// };
-
-
 const addAlbum = (album_id, name, artist, image, tags, description, callback) => {
   const params = [album_id, name, artist, image, tags, description];
   pool.query('insert into albums values ($1, $2, $3, $4, $5, $6)', params)
