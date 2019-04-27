@@ -82,7 +82,6 @@ const deleteAlbum = (id, callback) => {
 
 module.exports = {
   getAlbumsByAlbumId,
-  // getAlbumById,
   addAlbum,
   updateAlbum,
   deleteAlbum,
