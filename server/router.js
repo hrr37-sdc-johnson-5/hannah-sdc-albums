@@ -1,48 +1,35 @@
-const router = require('express').Router();
-const model = require('../database/db.js');
+const express = require('express');
+const db = require('../db/index.js');
 
+const app = express();
 
-var getAlbumsFromDb = (callback) => {
-  model.Album.
-    find({}).
-    exec(callback);
-}
-
-var getAlbumByID = (id, callback) => {
-  model.Album.
-    findOne({ id }).
-    exec(callback);
-}
-
-
-router.get('/albums/:id', (req, res) => {
-  getAlbumsFromDb((err, results) => {
-    if (err) return err;
-    var currentID = Number(req.params.id);
-    getAlbumByID(currentID, (err, result) => {
-      if (err) return err;
-      var albumTags = result.tags.split(',');
-      var relatedAlbums = results.filter(album => {
-        currentTags = album.tags.split(',');
-        for (var i = 0; i < albumTags.length; i++) {
-          if (currentTags.includes(albumTags[i]) && album.id !== currentID) {
-            return true;
-          }
-        }
-        return false;
-      });
-      var finalResults = relatedAlbums.slice(0, 7);
-      res.status(200).send(finalResults);
-    });
-  });
+app.get('/api/albums/:id', (req, res) => {
+  const { id } = req.params; // album_id
+  db.getAlbumsById(id)
+    .then(albums => res.json(albums))
+    .catch(err => console.log('ERROR: Could not get albums'));
 });
 
-router.get('/album/:id', (req, res) => {
-  var currentID = req.params.id;
-  getAlbumByID(currentID, (err, result) => {
-    if (err) return err;
-    res.status(200).send(result);
-  });
+app.post('/api/albums/:id', (req, res) => {
+  const { id } = req.params; // album_id
+  const { name, artist, image, tags, description } = req.body;
+
+  db.addAlbum(id, name, artist, image, tags, description)
+    .then(addedAlbum => res.json(addedAlbum))
+    .catch(err => console.log('ERROR: Could not add new album'));
 });
 
-module.exports = router
+app.put('/api/albums/:id', (req, res) => {
+  const { id } = req.body; // primary key id of recommended album
+  const toUpdate = req.body;
+  db.updateAlbum(id, toUpdate)
+    .then(updatedAlbum => res.json(updatedAlbum))
+    .catch(err => console.log('ERROR: Could not update album'));
+});
+
+app.delete('/api/albums/:id', (req, res) => {
+  const { id } = req.body; // primary key id of recommended album
+  db.deleteAlbum(id)
+    .then(deletedAlbum => res.json(deletedAlbum))
+    .catch(err => console.log('ERROR: Could not delete album'));
+});

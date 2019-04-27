@@ -4,14 +4,14 @@ create keyspace bandland with replication = {'class': 'SimpleStrategy', 'replica
 use bandland;
 
 CREATE TABLE albums(
-  id int PRIMARY KEY,
+  album_id int PRIMARY KEY,
   name text,
-  artist text,
-  image text,
-  tags text,
-  description text
+  artist varchar,
+  image varchar,
+  tags varchar,
+  description varchar
 );
 
 
-COPY bandland.albums (id, name, artist, image, tags, description) FROM 'db/data.csv' WITH HEADER=TRUE;
+COPY albums(album_id, name, artist, image, tags, description) FROM 'db/data.csv' WITH HEADER=TRUE;
 
