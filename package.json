@@ -12,8 +12,8 @@
     "start": "node server/server.js",
     "start:dev": "nodemon server/server.js",
     "data-gen": "node --max-old-space-size=8192 db/generateData.js",
-    "seed": "psql postgres < schema.sql",
-    "seed-cassandra": "cqlsh -f schema.cql",
+    "seed": "psql postgres < postgres-schema.sql",
+    "seed-cassandra": "cqlsh -f cassandra-schema.sql",
     "react-dev": "webpack -d --watch",
     "get-test": "curl http://localhost:3001/api/albums/1",
     "test": "jest"

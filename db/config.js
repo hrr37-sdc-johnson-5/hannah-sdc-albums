@@ -7,4 +7,8 @@ const pool = new Pool({
   database: 'bandland',
 });
 
+pool.connect()
+  .then(() => console.log('successfully connected'))
+  .catch(err => console.log(err, 'error connecting'));
+
 module.exports = { pool };
