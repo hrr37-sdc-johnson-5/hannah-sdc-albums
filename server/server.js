@@ -17,43 +17,34 @@ app.use('/:id', express.static(path.join(__dirname, '/../client/dist')));
 app.get('/api/albums/:id', (req, res) => {
   const album_id = req.params.id;
   db.getAlbumsByAlbumId(album_id, (albums) => {
-    res.send(albums);
+    res.status(200).send(albums.rows);
   });
 });
 
-// app.get('/api/albums/:id', (req, res) => {
-//   const album_id = req.params.id;
-//   db.getAlbumsByAlbumId(album_id, (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.json(result);
-//     }
-//   })
-// });
 
 app.post('/api/albums/:id', (req, res) => {
   const album_id = req.params.id;
   const { name, artist, image, tags, description } = req.body;
-
-  db.addAlbum(album_id, name, artist, image, tags, description)
-    .then(addedAlbum => res.json(addedAlbum))
-    .catch(err => console.log(err, 'ERROR: Could not add new album'));
+  db.addAlbum(album_id, name, artist, image, tags, description, (addedAlbum) => {
+    res.status(200).send(addedAlbum.rows);
+  });
 });
 
 app.put('/api/albums/:id', (req, res) => {
   const { id } = req.body; // primary key id of recommended album
-  const toUpdate = req.body;
-  db.updateAlbum(id, toUpdate)
-    .then(updatedAlbum => res.json(updatedAlbum))
-    .catch(err => console.log('ERROR: Could not update album'));
+  const toUpdate = req.body; // HOW TO GET TO UPDATE COLUMN
+  const value = req.body; // HOW TO EXTRACT VALUE
+
+  db.updateAlbum(id, toUpdate, value, (updatedAlbum) => {
+    res.status(200).send(updatedAlbum.rows);
+  });
 });
 
 app.delete('/api/albums/:id', (req, res) => {
   const { id } = req.body; // primary key id of recommended album
-  db.deleteAlbum(id)
-    .then(deletedAlbum => res.json(deletedAlbum))
-    .catch(err => console.log('ERROR: Could not delete album'));
+  db.deleteAlbum(id, (deletedAlbum) => {
+    res.status(200).send(deletedAlbum.rows);
+  });
 });
 
 
