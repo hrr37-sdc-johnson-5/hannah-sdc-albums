@@ -24,7 +24,6 @@ app.get('/api/albums/:id', (req, res) => {
   });
 });
 
-
 app.post('/api/albums/:id', (req, res) => {
   const album_id = req.params.id;
   const { name, artist, image, tags, description } = req.body;
@@ -38,8 +37,8 @@ app.post('/api/albums/:id', (req, res) => {
 
 app.put('/api/albums/:id', (req, res) => {
   const { id } = req.body; // primary key id of recommended album
-  const toUpdate = req.body; // HOW TO GET TO UPDATE COLUMN
-  const value = req.body; // HOW TO EXTRACT VALUE
+  const toUpdate = req.body.toUpdate; // HOW TO GET TO UPDATE COLUMN
+  const value = req.body.value; // HOW TO EXTRACT VALUE
 
   db.updateAlbum(id, toUpdate, value, (err, updatedAlbum) => {
     if (err) {
@@ -58,6 +57,5 @@ app.delete('/api/albums/:id', (req, res) => {
     res.status(200).json(deletedAlbum.rows);
   });
 });
-
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
