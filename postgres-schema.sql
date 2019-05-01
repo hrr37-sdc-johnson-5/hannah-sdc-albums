@@ -16,6 +16,8 @@ CREATE TABLE albums(
 
 create index album_index on albums(album_id);
 
+grant all privileges on table albums to postgres;
+
 
 
 
