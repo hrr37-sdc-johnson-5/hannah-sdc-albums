@@ -1,0 +1,21 @@
+config:
+  target: "http://localhost:3001"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+      rampTo: 10
+      name: "Initial ramp"
+    - duration: 60
+      arrivalRate: 50
+      rampTo: 100
+      name: "Mid ramp"
+    - duration: 120
+      arrivalRate: 100
+      rampTo: 500
+      name: "Full ramp"
+scenarios:
+  - name: 'get all albums for specific id'
+    flow:
+      - get:
+          url: "/api/albums/1"
+
