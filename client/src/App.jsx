@@ -1,6 +1,5 @@
 import React from 'react';
 import RecommendedAlbums from './components/RecommendedAlbums.jsx';
-import Tags from './components/Tags.jsx';
 
 
 class RecommendedAlbumsApp extends React.Component {
