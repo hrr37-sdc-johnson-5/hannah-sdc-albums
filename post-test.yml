@@ -1,0 +1,27 @@
+config:
+  target: "http://localhost:3001"
+  phases:
+    - duration: 30
+      arrivalRate: 1
+      rampTo: 10
+      name: "Initial ramp"
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 100
+      name: "Mid ramp"
+    - duration: 120
+      arrivalRate: 100
+      rampTo: 500
+      name: "Full ramp"
+scenarios:
+  - name: "post new album"
+    flow:
+      - post:
+          url: "/api/albums/1"
+          json:
+            album_id: 1
+            name: 'TestAlbum'
+            artist: 'TestArtist'
+            image: 'https://www.photosforclass.com/download/flickr-5663473'
+            tags: 'Art Punk, Alternative Rock, Indie Rock'
+            description: 'Test description for a fake band and fake album.'
