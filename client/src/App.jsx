@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import RecommendedAlbums from './components/RecommendedAlbums.jsx';
 import Tags from './components/Tags.jsx';
 
@@ -11,39 +10,25 @@ class RecommendedAlbumsApp extends React.Component {
     this.state = {
       albumResults: [],
       albumTags: null,
-      artist: null,
+      artist: 'TestArtist',
       albumId: albumIdFromUrl
-    }
+    };
+
     this.getRelatedAlbums = this.getRelatedAlbums.bind(this);
-    this.getExampleAlbumInfo = this.getExampleAlbumInfo.bind(this);
   }
 
   componentDidMount() {
-    this.getRelatedAlbums()
-    this.getExampleAlbumInfo()
+    this.getRelatedAlbums();
   }
 
   getRelatedAlbums() {
     fetch(`http://localhost:3001/api/albums/${this.state.albumId}`)
-      .then(response => {
-        return response.json();
-      })
-      .then(albumResults => {
-        this.setState({ albumResults });
-      });
-  }
-
-  getExampleAlbumInfo() {
-    fetch(`http://localhost:3001/api/album/${this.state.albumId}`)
-      .then(response => {
-        return response.json();
-      })
-      .then(album => {
-        this.setState({ artist: album.artist, albumTags: album.tags })
-      })
+      .then(response => response.json())
+      .then(albumResults => this.setState({ albumResults }));
   }
 
   render() {
+    const { artist, albumResults } = this.state;
     return (
       <div>
         {/* {ReactDOM.createPortal(
@@ -52,15 +37,15 @@ class RecommendedAlbumsApp extends React.Component {
         )} */}
         <div className="recommended-module">
           <div className="main-container">
-            <p className="recommended-title">If you like {this.state.artist}, you may also like:</p>
-            <div className="album-container"> <RecommendedAlbums albums={this.state.albumResults} /></div>
+            <p className="recommended-title">If you like {artist}, you may also like:</p>
+            <div className="album-container">
+              <RecommendedAlbums albums={albumResults} />
+            </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
-
-
 
 export default RecommendedAlbumsApp;

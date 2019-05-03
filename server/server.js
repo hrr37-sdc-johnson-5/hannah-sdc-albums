@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -16,10 +17,7 @@ app.use('/:id', express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/api/albums/:id', (req, res) => {
   const album_id = req.params.id;
-  db.getAlbumsByAlbumId(album_id, (err, albums) => {
-    if (err) {
-      res.status(500).send('Error getting albums');
-    }
+  db.getAlbumsByAlbumId(album_id, (albums) => {
     res.status(200).json(albums.rows);
   });
 });
@@ -27,10 +25,7 @@ app.get('/api/albums/:id', (req, res) => {
 app.post('/api/albums/:id', (req, res) => {
   const album_id = req.params.id;
   const { name, artist, image, tags, description } = req.body;
-  db.addAlbum(album_id, name, artist, image, tags, description, (err, addedAlbum) => {
-    if (err) {
-      res.status(500).send('Error adding new album');
-    }
+  db.addAlbum(album_id, name, artist, image, tags, description, (addedAlbum) => {
     res.status(200).json(addedAlbum.rows);
   });
 });
@@ -40,20 +35,14 @@ app.put('/api/albums/:id', (req, res) => {
   const toUpdate = req.body.toUpdate; // HOW TO GET TO UPDATE COLUMN
   const value = req.body.value; // HOW TO EXTRACT VALUE
 
-  db.updateAlbum(id, toUpdate, value, (err, updatedAlbum) => {
-    if (err) {
-      res.status(500).send('Error adding new album');
-    }
+  db.updateAlbum(id, toUpdate, value, (updatedAlbum) => {
     res.status(200).json(updatedAlbum.rows);
   });
 });
 
 app.delete('/api/albums/:id', (req, res) => {
   const { id } = req.body; // primary key id of recommended album
-  db.deleteAlbum(id, (err, deletedAlbum) => {
-    if (err) {
-      res.status(500).send('Error adding new album');
-    }
+  db.deleteAlbum(id, (deletedAlbum) => {
     res.status(200).json(deletedAlbum.rows);
   });
 });

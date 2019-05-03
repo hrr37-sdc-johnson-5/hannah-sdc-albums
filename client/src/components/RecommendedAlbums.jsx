@@ -6,7 +6,7 @@ class RecommendedAlbums extends React.Component {
     super(props);
     this.state = {
       activeAlbum: null,
-      isHovered: false
+      isHovered: false,
     }
     this.enterHandler = this.enterHandler.bind(this);
     this.leaveHandler = this.leaveHandler.bind(this);
@@ -17,14 +17,17 @@ class RecommendedAlbums extends React.Component {
   }
 
   leaveHandler() {
-    this.setState({ activeAlbum: null, isHovered: false })
+    this.setState({ activeAlbum: null, isHovered: false });
   }
 
   render() {
-    const hoverClass = this.state.isHovered ? "not-hovered-on" : "";
+    const { isHovered, activeAlbum } = this.state;
+    const { albums } = this.props;
+
+    const hoverClass = isHovered ? 'not-hovered-on' : '';
     return (
-      this.props.albums.map((album => {
-        const activeAlbumClass = this.state.isHovered && this.state.activeAlbum === album.id ? "hovered-on" : ""
+      albums.map(((album) => {
+        const activeAlbumClass = isHovered && activeAlbum === album.id ? 'hovered-on' : '';
         return <div key={album.id} className={`album-square ${hoverClass} ${activeAlbumClass}`} onMouseEnter={() => this.enterHandler(album.id)} onMouseLeave={this.leaveHandler} >
           <img className="album-art" src={album.albumArt} />
           <div className="rec-album-info">
@@ -37,9 +40,8 @@ class RecommendedAlbums extends React.Component {
             <br></br>
             <a className="album-link" href="#">go to album</a></div>) : null}
         </div>
-      })
-      )
-    )
+      }))
+    );
   }
 }
 

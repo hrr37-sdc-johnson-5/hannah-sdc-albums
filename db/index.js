@@ -1,3 +1,4 @@
+require('newrelic');
 const { pool } = require('./config.js');
 
 // READ
@@ -11,16 +12,6 @@ const getAlbumsByAlbumId = (album_id, callback) => {
       callback(err);
     });
 };
-
-// const getAlbumsByAlbumId = (album_id) => {
-//   pool.query('select * from albums where album_id = $1', [album_id])
-//     .then((albums) => {
-//       return albums;
-//     })
-//     .catch((err) => {
-//       console.log(err, 'Error getting all albums');
-//     });
-// };
 
 // CREATE
 const addAlbum = (album_id, name, artist, image, tags, description, callback) => {
